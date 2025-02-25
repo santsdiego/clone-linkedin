@@ -1,0 +1,25 @@
+# Ignora arquivos do Python/Django
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+env/
+db.sqlite3
+media/
+*.log
+
+# Ignora arquivos do Node.js/React
+node_modules/
+dist/
+build/
+*.env
+.next/
+.vscode/
+package-lock.json
+
+# Ignora arquivos do Editor
+.idea/
+.DS_Store
+*.swp
+
