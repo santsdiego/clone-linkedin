@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 🔥 Adicione essas linhas abaixo
-    'rest_framework',  # Django REST Framework
-    'meu_app',         # Nosso app (precisa estar registrado!)
+    
+    'rest_framework',  
+    'user_search_app',         
 ]
 
 MIDDLEWARE = [
