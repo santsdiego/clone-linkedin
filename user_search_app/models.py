@@ -7,6 +7,7 @@ class Usuario(models.Model):
     telefone = models.CharField(max_length=15)
 
     cargo = models.CharField(max_length=255, null=True, blank=True)
+    
     formacao_academica = models.JSONField(null=True, blank=True)
     xp_profissional = models.JSONField(null=True, blank=True)
     interesse = models.JSONField(null=True, blank=True)
