@@ -1,0 +1,29 @@
+[33mcommit 7c99ec175c98aa70d1b2488488aab156d3bf511d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mbackend2/feature[m[33m)[m
+Author: Dalilla dos Santos Vidal <dalillavidal97@gmail.com>
+Date:   Tue Mar 11 01:11:31 2025 -0300
+
+    Alterações nos arquivos de modelos, URLs e views para a funcionalidade de busca
+
+[33mcommit cc2e981171012b072e3c83cdbcbbd33f1860be92[m[33m ([m[1;31morigin/backend2/feature[m[33m)[m
+Author: Dalilla dos Santos Vidal <dalillavidal97@gmail.com>
+Date:   Tue Mar 11 00:24:07 2025 -0300
+
+    ajustes na lógica para busca de usuário
+
+[33mcommit 7ae9a50f70dd45c873282caa5819933edceb3528[m
+Author: Dalilla dos Santos Vidal <dalillavidal97@gmail.com>
+Date:   Sat Mar 8 17:17:18 2025 -0300
+
+    ajustes na modelagem do usuário e arquivo .env
+
+[33mcommit bc2ccfa0aca8ebf8cb8edaaa1fd1b53e8b06ad3d[m
+Author: Dalilla dos Santos Vidal <dalillavidal97@gmail.com>
+Date:   Fri Mar 7 21:50:29 2025 -0300
+
+    Modelagem do usuário
+
+[33mcommit 16a7dba68e479136d6cf69dc4e0cce7a726a0db0[m
+Author: Luiz Henrique Pinotti <luiz.pinotti.ilia@cnpseguradora.com.br>
+Date:   Wed Mar 5 14:15:57 2025 -0300
+
+    Criando a branch backend2/feature
