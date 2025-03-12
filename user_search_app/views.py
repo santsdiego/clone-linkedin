@@ -4,8 +4,9 @@ from .models import Usuario
 from .serializers import UsuarioSerializer
 
 class UsuarioListView(generics.ListAPIView):
-    queryset = Usuario.objects.all()  # Pega todos os usuários
+    queryset = Usuario.objects.all()  
     serializer_class = UsuarioSerializer
-    filter_backends = (filters.SearchFilter,)  # Habilita a filtragem
+    filter_backends = (filters.SearchFilter,) 
     
-    search_fields = ['nome']  # Permite busca apenas pelo campo 'nome'
+    search_fields = ['nome']
+
