@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+    <html lang="pt-br">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+            <link rel="stylesheet" href="./style_test_api_update.css">
+            <title>Editar Usuário</title>
+            <style>
+                
+            </style>
+        </head>
+        <body>
+            <div class="container d-flex justify-content-center">
+                <h1>Atualizar dados do Usuário</h1>
+            </div>        
+            <div class="container">
+                <form 
+                    id="form_update"
+                    class="d-flex flex-column align-items-between"
+                    onsubmit="(e) => e.preventDefault()">
+                    <input 
+                        type="text" 
+                        name="nome" 
+                        id="nome"
+                        class="mb-3"
+                        placeholder="Nome"
+                        required
+                    />
+                    <input 
+                        type="email" 
+                        name="email" 
+                        id="email"
+                        class="mb-3"
+                        placeholder="E-mail"
+                        required
+                    />
+                    <input 
+                        type="number" 
+                        name="idade" 
+                        id="idade"
+                        class="mb-3"
+                        placeholder="Idade"
+                        required
+                    />
+                    <input 
+                        type="text" 
+                        name="telefone" 
+                        id="telefone"
+                        class="mb-3"
+                        placeholder="Telefone"
+                        required
+                    />
+                    <div>
+                        <input 
+                            type="text" 
+                            name="formacao" 
+                            id="formacao"
+                            class="mb-3"
+                            placeholder="Formação acadêmica"
+                        />
+                        <button 
+                            id="btn-add"
+                            type="button"
+                            onclick="addFormacao()">
+                            +
+                        </button>
+                        <div 
+                            id="container_formacao" 
+                            class="container">
+                        </div>                    
+                    </div>
+                    <div>
+                        <input 
+                            type="text" 
+                            name="xp_profissional" 
+                            id="xp_profissional"
+                            class="mb-3"
+                            placeholder="Experiência"
+                        />
+                        <button 
+                            id="btn-add"
+                            type="button"
+                            onclick="addExperiencia()">
+                            +
+                        </button>
+                        <div 
+                            id="container_experiencia"
+                            class="container d-flex flex-column">
+                        </div>
+                    </div>
+                    <input 
+                        type="text" 
+                        name="interesse" 
+                        id="interesse"
+                        class="mb-3"
+                        placeholder="Interesses"
+                    />
+                    <input 
+                        type="text" 
+                        name="competencias" 
+                        id="competencias"
+                        class="mb-3"
+                        placeholder="Competências"
+                    />
+                    <input 
+                        type="text" 
+                        name="atividades" 
+                        id="atividades"
+                        class="mb-3"
+                        placeholder="Atividades"
+                    />
+                    <input 
+                        type="text" 
+                        name="certificados" 
+                        id="certificados"
+                        class="mb-3"
+                        placeholder="Certificados"
+                    />
+                    <button 
+                        onclick="updateUser()">
+                        Salvar
+                    </button>
+                </form>    
+            </div>
+            <script>
+                document.getElementById("form_update").setAttribute("onsubmit", (e) => {
+                    e.preventDefault();
+                });
+
+
+                let count_formacao = 0
+                let array_formacao = [];
+                function addFormacao(){
+                    let container_formacao = document.getElementById("container_formacao");
+                    let formacao = document.getElementById("formacao");
+
+                    if(formacao.value != ""){
+                        let p = document.createElement("p");
+                        let value = document.createTextNode(formacao.value);
+                        let button_remove = document.createElement("button");
+                        let text_button = document.createTextNode("x");
+                        p.setAttribute("class", "bg-secondary bg-gradient px-2 text-white item-formacao");
+                        p.setAttribute("id", count_formacao);
+                        p.appendChild(value);
+                        button_remove.setAttribute("id", "btn-remove");
+                        button_remove.setAttribute("type", "button");
+                        button_remove.setAttribute("onclick", `removeItemFormacao(${count_formacao})`);
+                        button_remove.appendChild(text_button);
+                        p.appendChild(button_remove);
+                        container_formacao.appendChild(p);
+
+                        array_formacao.push(formacao.value);
+                        formacao.value = "";
+                        count_formacao ++;
+
+                        //console.log(array_formacao);
+                    }
+                }
+
+                function removeItemFormacao(id_element){
+                    let formacao = document.getElementById(id_element).innerText
+                    let tamanho_item_text = formacao.length
+
+                    let formacaoF = formacao.substring(0, tamanho_item_text - 1);
+
+                    let index = array_formacao.indexOf(formacaoF.trim())
+                    array_formacao.splice(index, 1);
+
+                    let item = document.getElementById(id_element);
+                    document.getElementById("container_formacao").removeChild(item);
+
+                    //console.log(array_formacao);
+                }
+
+
+                let count_experiencias = 0;
+                function addExperiencia(){
+                    let container_experiencia = document.getElementById("container_experiencia");
+
+                    let fieldset = document.createElement("fieldset");
+                    fieldset.setAttribute("id", `${count_experiencias}`);
+
+                    let btn_remove_experiencia = document.createElement("button");
+                    btn_remove_experiencia.setAttribute("type", "button");
+                    btn_remove_experiencia.setAttribute("id", "btn-remove-experiencia");
+                    btn_remove_experiencia.setAttribute("class", "btn-remove");
+                    let text_button = document.createTextNode("x");
+                    btn_remove_experiencia.appendChild(text_button);
+                    fieldset.appendChild(btn_remove_experiencia);
+
+                    let inputTitle = document.createElement("input");
+                    inputTitle.setAttribute("id", "inp_title");
+                    inputTitle.setAttribute("class", "mb-2");
+                    inputTitle.setAttribute("type", "text");
+                    inputTitle.setAttribute("placeholder", "Título");
+                    fieldset.appendChild(inputTitle)
+
+
+                    let selectTypeJob = document.createElement("select");
+                    selectTypeJob.setAttribute("class", "select-type-job");
+
+                    let optionSelecione = document.createElement("option");
+                    optionSelecione.setAttribute("value", "Selecione");
+                    let textSelecione = document.createTextNode("Selecione");
+                    optionSelecione.appendChild(textSelecione);
+                    selectTypeJob.appendChild(optionSelecione);
+
+                    let optionTempoIntegral = document.createElement("option");
+                    optionTempoIntegral.setAttribute("value", "Tempo Integral");
+                    let textTempoIntegral = document.createTextNode("Tempo Integral");
+                    optionTempoIntegral.appendChild(textTempoIntegral);
+                    selectTypeJob.appendChild(optionTempoIntegral);
+
+                    let optionMeioPeriodo = document.createElement("option");
+                    optionMeioPeriodo.setAttribute("value", "Meio Período");
+                    let textMeioPeriodo = document.createTextNode("Meio Período");
+                    optionMeioPeriodo.appendChild(textMeioPeriodo);
+                    selectTypeJob.appendChild(optionMeioPeriodo);
+
+                    let optionAutonomo = document.createElement("option");
+                    optionAutonomo.setAttribute("value", "Autônomo");
+                    let textAutonomo = document.createTextNode("Autônomo");
+                    optionAutonomo.appendChild(textAutonomo);
+                    selectTypeJob.appendChild(optionAutonomo);
+
+                    let optionFreelance = document.createElement("option");
+                    optionFreelance.setAttribute("value", "Freelance");
+                    let textFreelance = document.createTextNode("Freelance");
+                    optionFreelance.appendChild(textFreelance);
+                    selectTypeJob.appendChild(optionFreelance);
+
+                    let optionTemporario = document.createElement("option");
+                    optionTemporario.setAttribute("value", "Temporário");
+                    let textTemporario = document.createTextNode("Temporário");
+                    optionTemporario.appendChild(textTemporario);
+                    selectTypeJob.appendChild(optionTemporario);
+
+                    let optionEstagio = document.createElement("option");
+                    optionEstagio.setAttribute("value", "Estágio");
+                    let textEstagio = document.createTextNode("Estágio");
+                    optionEstagio.appendChild(textEstagio);
+                    selectTypeJob.appendChild(optionEstagio);
+
+                    let optionAprendiz = document.createElement("option");
+                    optionAprendiz.setAttribute("value", "Aprendiz");
+                    let textAprendiz = document.createTextNode("Aprendiz");
+                    optionAprendiz.appendChild(textAprendiz);
+                    selectTypeJob.appendChild(optionAprendiz);
+
+                    let optionTrainee = document.createElement("option");
+                    optionTrainee.setAttribute("value", "Trainee");
+                    let textTrainee = document.createTextNode("Trainee");
+                    optionTrainee.appendChild(textTrainee);
+                    selectTypeJob.appendChild(optionTrainee);
+
+                    let optionTerceirizado = document.createElement("option");
+                    optionTerceirizado.setAttribute("value", "Terceirizado");
+                    let textTerceirizado = document.createTextNode("Terceirizado");
+                    optionTerceirizado.appendChild(textTerceirizado);
+                    selectTypeJob.appendChild(optionTerceirizado);
+
+                    fieldset.appendChild(selectTypeJob);
+
+
+                    let inputEmpresa = document.createElement("input");
+                    inputEmpresa.setAttribute("id", "inp_empresa");
+                    inputEmpresa.setAttribute("class", "mb-2");
+                    inputEmpresa.setAttribute("type", "text");
+                    inputEmpresa.setAttribute("placeholder", "Empresa ou Organização");
+                    fieldset.appendChild(inputEmpresa)
+
+
+                    let containerTrabalhaEmpresa = document.createElement("div")
+                    containerTrabalhaEmpresa.setAttribute("class", "container-trabalha-atualmente");
+                    let inputTrabalhaNaEmpresa = document.createElement("input");
+                    inputTrabalhaNaEmpresa.setAttribute("id", "inp_trabalha_atualmente");
+                    inputTrabalhaNaEmpresa.setAttribute("type", "checkbox");
+                    inputTrabalhaNaEmpresa.setAttribute("class", "mx-2");
+                    let label = document.createElement("label");
+                    label.setAttribute("for", "inp_trabalha_atualmente");
+                    let textLabel = document.createTextNode("Trabalho atualmente neste cargo");
+                    label.appendChild(textLabel);
+                    containerTrabalhaEmpresa.appendChild(inputTrabalhaNaEmpresa);
+                    containerTrabalhaEmpresa.appendChild(label);
+                    fieldset.append(containerTrabalhaEmpresa);
+
+
+                    container_experiencia.appendChild(fieldset);
+                    count_experiencias ++;
+                }
+
+
+                async function updateUser(){
+                    let nome = document.getElementById("nome").value;
+                    let email = document.getElementById("email").value;
+                    let idade = document.getElementById("idade").value;
+                    let telefone = document.getElementById("telefone").value;
+
+                    if(nome == "" || nome.trim() === ""){
+                        console.log("O campo NOME não pode ser vazio.");
+
+                    } else if(email == '' || email.trim() === ""){
+                        console.log("O campo EMAIL não pode ser vazio.");
+
+                    } else if(idade == ""){
+                        console.log("O campo IDADE não pode ser vazio.");
+
+                    } else{
+                        const idUser = 2;
+                        const url = `http://localhost:8000/usuarios/${idUser}/`;
+                        const connection = await fetch(url, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "accept": "application/json"
+                            },
+                            credentials: "include",
+                            body: JSON.stringify({
+                                nome: nome,
+                                email: email,
+                                idade: idade,
+                                telefone: telefone,
+                            })
+                        });
+
+                        const data = await connection.json();
+                        console.log(data);
+                    }
+                }
+            </script>    
+        </body>
+    </html>

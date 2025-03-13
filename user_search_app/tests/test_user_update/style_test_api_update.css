@@ -1,0 +1,63 @@
+#btn-add {
+    border: 1px solid rgb(143, 143, 143);
+    background-color: rgb(171, 245, 171);
+    color: rgb(3, 54, 3);
+    border-radius: 2px;
+}
+
+#btn-remove {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    width: 30px;
+    height: 100%;
+    line-height: 1;
+    border: 1px solid rgb(121, 121, 121);
+    background-color: rgb(248, 179, 179);
+    color: brown;
+}
+.btn-remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    align-self: flex-end;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 8px;
+    line-height: 1;
+    border: 1px solid rgb(121, 121, 121);
+    background-color: rgb(248, 179, 179);
+    color: brown;
+}
+
+.item-formacao {
+    position: relative !important;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.select-type-job {
+    height: 30px;
+    margin-bottom: 8px;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(138, 138, 138);
+    padding: 10px 5px;
+    margin-bottom: 10px;
+    box-shadow: 1px 1px 5px rgb(54, 54, 54);
+    position: relative;
+}
+
+.container-trabalha-atualmente {
+    display: flex;
+    flex-direction: row;
+}
+
+
