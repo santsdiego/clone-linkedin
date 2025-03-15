@@ -20,6 +20,12 @@
                     class="d-flex flex-column align-items-between"
                     onsubmit="(e) => e.preventDefault()">
                     <input 
+                        id="inp-id"
+                        type="number" 
+                        placeholder="Id"
+                        class="mb-3"
+                    />
+                    <input 
                         type="text" 
                         name="nome" 
                         id="nome"
@@ -57,7 +63,7 @@
                             name="formacao" 
                             id="formacao"
                             class="mb-3"
-                            placeholder="Formação acadêmica"
+                            placeholder="Interesse"
                         />
                         <button 
                             id="btn-add"
@@ -174,12 +180,13 @@
                 }
 
 
-                let count_experiencias = 0;
+                let count_experiencias = 0
+                let array_experiencias = [];
                 function addExperiencia(){
                     let container_experiencia = document.getElementById("container_experiencia");
 
                     let fieldset = document.createElement("fieldset");
-                    fieldset.setAttribute("id", `${count_experiencias}`);
+                    fieldset.setAttribute("id", `ex${count_experiencias}`);
 
                     let btn_remove_experiencia = document.createElement("button");
                     btn_remove_experiencia.setAttribute("type", "button");
@@ -189,11 +196,18 @@
                     btn_remove_experiencia.appendChild(text_button);
                     fieldset.appendChild(btn_remove_experiencia);
 
+                    let title = document.createElement("h4");
+                    let textTitle = document.createTextNode("Experiência");
+                    title.appendChild(textTitle);
+                    fieldset.appendChild(title);
+
+                    let ex = document.getElementById("xp_profissional").value;
                     let inputTitle = document.createElement("input");
                     inputTitle.setAttribute("id", "inp_title");
                     inputTitle.setAttribute("class", "mb-2");
                     inputTitle.setAttribute("type", "text");
                     inputTitle.setAttribute("placeholder", "Título");
+                    inputTitle.setAttribute("value", ex);
                     fieldset.appendChild(inputTitle)
 
 
@@ -283,15 +297,215 @@
                     label.appendChild(textLabel);
                     containerTrabalhaEmpresa.appendChild(inputTrabalhaNaEmpresa);
                     containerTrabalhaEmpresa.appendChild(label);
-                    fieldset.append(containerTrabalhaEmpresa);
+                    fieldset.appendChild(containerTrabalhaEmpresa);
+
+
+                    let containerMesInicio = document.createElement("div");
+                    containerMesInicio.setAttribute("class", "d-flex flex-column container-mes-ano-inicio");
+
+                    let containerMes = document.createElement("div");
+                    containerMes.setAttribute("class", "d-flex flex-column");
+                    containerMesInicio.appendChild(containerMes);
+
+
+                    let pMes = document.createElement("p");
+                    pMes.setAttribute("class", "mt-3 mb-0")
+                    let textMesInicio = document.createTextNode("Início:");
+                    pMes.appendChild(textMesInicio);
+                    containerMes.appendChild(pMes);
+
+                    let selectMonth = document.createElement("select");
+
+                    let optionMes = document.createElement("option");
+                    let textOptionMes = document.createTextNode("Mês");
+                    optionMes.appendChild(textOptionMes);
+                    selectMonth.appendChild(optionMes);
+
+                    let optionJaneiro = document.createElement("option");
+                    let textOptionJaneiro = document.createTextNode("Janeiro");
+                    optionJaneiro.appendChild(textOptionJaneiro);
+                    selectMonth.appendChild(optionJaneiro);
+
+                    let optionFevereiro = document.createElement("option");
+                    let textOptionFevereiro = document.createTextNode("Fevereiro");
+                    optionFevereiro.appendChild(textOptionFevereiro);
+                    selectMonth.appendChild(optionFevereiro);
+
+                    let optionMarco = document.createElement("option");
+                    let textOptionMarco = document.createTextNode("Marco");
+                    optionMarco.appendChild(textOptionMarco);
+                    selectMonth.appendChild(optionMarco);
+
+                    let optionAbril = document.createElement("option");
+                    let textOptionAbril = document.createTextNode("Abril");
+                    optionAbril.appendChild(textOptionAbril);
+                    selectMonth.appendChild(optionAbril);
+                    
+                    let optionMaio = document.createElement("option");
+                    let textOptionMaio = document.createTextNode("Maio");
+                    optionMaio.appendChild(textOptionMaio);
+                    selectMonth.appendChild(optionMaio);
+                    
+                    let optionJunho = document.createElement("option");
+                    let textOptionJunho = document.createTextNode("Junho");
+                    optionJunho.appendChild(textOptionJunho);
+                    selectMonth.appendChild(optionJunho);
+
+                    let optionJulho = document.createElement("option");
+                    let textOptionJulho = document.createTextNode("Julho");
+                    optionJulho.appendChild(textOptionJulho);
+                    selectMonth.appendChild(optionJulho);
+
+                    let optionAgosto = document.createElement("option");
+                    let textOptionAgosto = document.createTextNode("Agosto");
+                    optionAgosto.appendChild(textOptionAgosto);
+                    selectMonth.appendChild(optionAgosto);
+
+                    let optionSetembro = document.createElement("option");
+                    let textOptionSetembro = document.createTextNode("Setembro");
+                    optionSetembro.appendChild(textOptionSetembro);
+                    selectMonth.appendChild(optionSetembro);
+
+                    let optionOutubro = document.createElement("option");
+                    let textOptionOutubro = document.createTextNode("Outubro");
+                    optionOutubro.appendChild(textOptionOutubro);
+                    selectMonth.appendChild(optionOutubro);
+
+                   
+                    let optionNovembro = document.createElement("option");
+                    let textOptionNovembro = document.createTextNode("Novembro");
+                    optionNovembro.appendChild(textOptionNovembro);
+                    selectMonth.appendChild(optionNovembro);
+
+                    let optionDezembro = document.createElement("option");
+                    let textOptionDezembro = document.createTextNode("Dezembro");
+                    optionDezembro.appendChild(textOptionDezembro);
+                    selectMonth.appendChild(optionDezembro);
+                    
+                    containerMes.appendChild(selectMonth);
+                    fieldset.appendChild(containerMesInicio);
+
+                    
+                    let containerAnoInicio = document.createElement("div");
+                    let inputAno = document.createElement("input");
+                    inputAno.setAttribute("id", "ano_inicio");
+                    inputAno.setAttribute("type", "number");
+                    inputAno.setAttribute("placeholder", "Ano");
+                    inputAno.setAttribute("class", "mt-2");
+                    containerAnoInicio.appendChild(inputAno);
+                    containerMesInicio.appendChild(containerAnoInicio);
+
+
+
+
+
+                    let containerMesFim = document.createElement("div");
+                    containerMesInicio.setAttribute("class", "d-flex flex-column container-mes-ano-inicio");
+
+                    let containerMes = document.createElement("div");
+                    containerMes.setAttribute("class", "d-flex flex-column");
+                    containerMesInicio.appendChild(containerMes);
+
+
+                    let pMes = document.createElement("p");
+                    pMes.setAttribute("class", "mt-3 mb-0")
+                    let textMesFim = document.createTextNode("Início:");
+                    pMes.appendChild(textMesFim);
+                    containerMes.appendChild(pMes);
+
+                    let selectMonthFim = document.createElement("select");
+
+                    let optionMesFim = document.createElement("option");
+                    let textOptionMesFim = document.createTextNode("Mês");
+                    optionMes.appendChild(textOptionMesFim);
+                    selectMonthFim.appendChild(optionMesFim);
+
+                    let optionJaneiroFim = document.createElement("option");
+                    let textOptionJaneiroFim = document.createTextNode("Janeiro");
+                    optionJaneiroFim.appendChild(textOptionJaneiroFim);
+                    selectMonthFim.appendChild(optionJaneiroFim);
+
+                    let optionFevereiroFim = document.createElement("option");
+                    let textOptionFevereiroFim = document.createTextNode("Fevereiro");
+                    optionFevereiroFim.appendChild(textOptionFevereiroFim);
+                    selectMonthFim.appendChild(optionFevereiroFim);
+
+                    let optionMarcoFim = document.createElement("option");
+                    let textOptionMarcoFim = document.createTextNode("Marco");
+                    optionMarcoFim.appendChild(textOptionMarcoFim);
+                    selectMonthFim.appendChild(optionMarcoFim);
+
+                    let optionAbrilFim = document.createElement("option");
+                    let textOptionAbrilFim = document.createTextNode("Abril");
+                    optionAbrilFim.appendChild(textOptionAbrilFim);
+                    selectMonthFim.appendChild(optionAbrilFim);
+                    
+                    let optionMaioFim = document.createElement("option");
+                    let textOptionMaioFim = document.createTextNode("Maio");
+                    optionMaioFim.appendChild(textOptionMaioFim);
+                    selectMonthFim.appendChild(optionMaioFim);
+                    
+                    let optionJunhoFim = document.createElement("option");
+                    let textOptionJunhoFim = document.createTextNode("Junho");
+                    optionJunho.appendChild(textOptionJunhoFim);
+                    selectMonth.appendChild(optionJunhoFim);
+
+                    let optionJulhoFim = document.createElement("option");
+                    let textOptionJulhoFim = document.createTextNode("Julho");
+                    optionJulho.appendChild(textOptionJulhoFim);
+                    selectMonth.appendChild(optionJulhoFim);
+
+                    let optionAgostoFim = document.createElement("option");
+                    let textOptionAgostoFim = document.createTextNode("Agosto");
+                    optionAgosto.appendChild(textOptionAgostoFim);
+                    selectMonth.appendChild(optionAgostoFim);
+
+                    let optionSetembroFim = document.createElement("option");
+                    let textOptionSetembroFim = document.createTextNode("Setembro");
+                    optionSetembro.appendChild(textOptionSetembroFim);
+                    selectMonth.appendChild(optionSetembroFim);
+
+                    let optionOutubroFim = document.createElement("option");
+                    let textOptionOutubroFim = document.createTextNode("Outubro");
+                    optionOutubroFim.appendChild(textOptionOutubroFim);
+                    selectMonthFim.appendChild(optionOutubroFim);
+
+                   
+                    let optionNovembroFim = document.createElement("option");
+                    let textOptionNovembroFim = document.createTextNode("Novembro");
+                    optionNovembroFim.appendChild(textOptionNovembroFim);
+                    selectMonthFim.appendChild(optionNovembroFim);
+
+                    let optionDezembroFim = document.createElement("option");
+                    let textOptionDezembroFim = document.createTextNode("Dezembro");
+                    optionDezembroFim.appendChild(textOptionDezembroFim);
+                    selectMonthFim.appendChild(optionDezembroFim);
+                    
+                    containerMes.appendChild(selectMonth);
+                    fieldset.appendChild(containerMesInicio);
+
+                    
+                    let containerAnoInicioFim = document.createElement("div");
+                    let inputAnoFim = document.createElement("input");
+                    inputAnoFim.setAttribute("id", "ano_inicio");
+                    inputAnoFim.setAttribute("type", "number");
+                    inputAnoFim.setAttribute("placeholder", "Ano");
+                    inputAnoFim.setAttribute("class", "mt-2");
+                    containerAnoFim.appendChild(inputAnoFim);
+                    containerMesFim.appendChild(containerAnoFim);
 
 
                     container_experiencia.appendChild(fieldset);
                     count_experiencias ++;
                 }
 
+                function removeItemExperiencia(id_element){
+                    
+                }
+
 
                 async function updateUser(){
+                    let idUser = document.getElementById("inp-id").value;
                     let nome = document.getElementById("nome").value;
                     let email = document.getElementById("email").value;
                     let idade = document.getElementById("idade").value;
@@ -307,25 +521,30 @@
                         console.log("O campo IDADE não pode ser vazio.");
 
                     } else{
-                        const idUser = 2;
                         const url = `http://localhost:8000/usuarios/${idUser}/`;
-                        const connection = await fetch(url, {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                                "accept": "application/json"
-                            },
-                            credentials: "include",
-                            body: JSON.stringify({
-                                nome: nome,
-                                email: email,
-                                idade: idade,
-                                telefone: telefone,
-                            })
-                        });
 
-                        const data = await connection.json();
-                        console.log(data);
+                        try {
+                            const connection = await fetch(url, {
+                                method: "PUT",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    //"accept": "application/json"
+                                },
+                                //credentials: "include",
+                                body: JSON.stringify({
+                                    nome: nome,
+                                    email: email,
+                                    idade: idade,
+                                    telefone: telefone,
+                                })
+                            });
+
+                            const data = await connection.json();
+                            console.log(data);
+
+                        } catch(error){
+                            console.error("Erro na requisição: ", error);
+                        }
                     }
                 }
             </script>    

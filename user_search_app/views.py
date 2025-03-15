@@ -14,7 +14,7 @@ class UsuarioListView(generics.ListAPIView):
     search_fields = ['nome']  # Permite busca apenas pelo campo 'nome'
 
 
-class UsuarioUpdateView(generics.RetrieveUpdateAPIView): #Testar depois o UpdateAPIView se funciona...
+class UsuarioUpdateView(generics.UpdateAPIView): #Testar depois o RetrieveUpdateAPIView se funciona...
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
     lookup_field = 'pk'
